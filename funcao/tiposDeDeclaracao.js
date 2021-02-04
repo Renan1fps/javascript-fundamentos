@@ -1,7 +1,7 @@
 console.log(somar(3,9))
 
-//function declaration <--essa eu posso usar antes mesmo de declarar exemplo acima
-function somar(x, y) {
+//function declaration <--essa eu posso usar antes mesmo de declarar exeplo acima
+function somar(x y) {
   return x + y;
 }
 
