@@ -1,8 +1,9 @@
 <h1>Formulário</h1>
 
-<form action="http://localhost:8080/usuarios" method="POST">
+<form method="POST">
 
-    <input type="text" name="Nome">
+<input type="hidden" name="id" value="3">
+    <input type="text" name="name">
     <input type="password" name="senha">
     <textarea name="bio" cols="30" rows="10"></textarea>
     <div>
@@ -23,7 +24,8 @@
         
     </div>
 
-    <button>Enviar</button>
+    <button formaction="http://localhost:8080/usuarios">Enviar</button>
+    <button formaction="http://localhost:8080/usuarios/3">Alterar</button>
 
 
 
