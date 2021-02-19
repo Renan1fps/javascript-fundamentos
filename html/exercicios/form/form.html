@@ -1,10 +1,42 @@
 <h1>Formulário</h1>
 
-<form action="http://localhost:8888/usuarios" method="POST">
+<form action="http://localhost:8080/usuarios" method="POST">
 
     <input type="text" name="Nome">
+    <input type="password" name="senha">
+    <textarea name="bio" cols="30" rows="10"></textarea>
+    <div>
+        <input type="radio" name="tipo" value="admin">admin
+        <input type="radio" name="tipo" value="user">user
+        <input type="radio" name="tipo" value="professor">professor
+    </div>
+    <div>
+        <input type="checkbox" name="ativo">Ativo
+    </div>
+    <div>
+        <select name="estado" >
+            <option value="SP">São Paulo</option>
+            <option value="DF">Brasilia</option>
+            <option value="PR">Paraná</option>
+            <option value="RS">Rio Grande do Sul</option>
+        </select>
+        
+    </div>
+
     <button>Enviar</button>
 
 
 
 </form>
+<style>
+    input,
+    textarea {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type='radio'],
+    input[type='checkbox'] {
+        display: inline;
+    }
+</style>

@@ -9,4 +9,4 @@ app.post("/usuarios", (req, res) => {
   res.send('<h1>Nome cadastrado com sucesso!</h1>')
 });
 
-app.listen(8888)
+app.listen(8080)
