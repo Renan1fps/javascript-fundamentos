@@ -15,41 +15,61 @@
         }
 
         body {
-            
-            background: linear-gradient(to left, black, #815E8B )
+
+            background: linear-gradient(to left, black, #815E8B)
+        }
+
+        .selector {
+            padding: 1px 0px 0px 0px;
         }
 
         /*pseudo classe, quando passo o mouse em cima*/
         .selector:hover {
             background-color: #815E8B;
         }
-        #naruto{
+
+        #naruto {
 
             top: 300px;
             width: 300px;
-            
-        }
-        #div{
-            padding: 10px 40px 40px 450px;
-        }
-        h1{
-            padding: 10px 400px 40px 500px;
-            color: aliceblue;
-            font: arial;
+
         }
 
+        #div {
+            padding: 40px 400px 40px 500px;
+        }
+        #div-botao{
+            padding: 4px 400px 2px 600px;
+        }
+        #botao{
+            background-color: #5C1F71;
+            color: aliceblue;
+            border-color: rgb(104, 100, 100);
+            border-radius: 7px;
+        }
+        #botao:hover{
+            background-color: #815E8B;
+            
+        }
+        
     </style>
 </head>
 
 <body>
     <div class="selector">Conteúdo</div>
-    <p>
-        <h1>Naruto usumaki</h1>
-    </p>
+
     <div id="div">
-        <img id="naruto" src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/7877d813840023.5627932a953e6.png" alt="naruto" >
+        <img id="naruto" src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/7877d813840023.5627932a953e6.png"
+            alt="naruto">
+           
     </div>
- 
+    <div id="div-botao">
+        <button id="botao">
+            <a id="botao" href="https://meusanimes.com/assistir/ver-animes-naruto-shippuden" target="_blank">Assistir
+                naruto</a><br>
+        </button>
+    </div>
+    
 </body>
 
 </html>
