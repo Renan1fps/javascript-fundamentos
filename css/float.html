@@ -11,18 +11,26 @@
 
         .c1 {
             background-color: red;
+            float: right; /*move meu elemento para o lado que eu quiser*/
         }
 
         .c2 {
             background-color: green;
+            float: left;
+            clear: right; /*ele faz com que esse elemento nao seja afetado pelo float*/
         }
         
         .c3 {
             background-color: blue;
+            clear: both; /*limpa todos os floats para esse não ser afetado*/
         }
 
         .c4 {
             background-color: orange;
+        }
+        div{
+            width: 150px;
+            height: 150px;
         }
     </style>
 </head>
