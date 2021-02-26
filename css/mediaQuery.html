@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>Media Query</title>
     <style>
         div {
@@ -11,12 +12,32 @@
             background-color: coral;
             border: solid 5px;
             display: none;
+            text-align: center;
+        }
+
+        /*para responsividade usa-se @media(parametros)*/
+        @media(max-width: 600px) {
+
+            /*se a largura da tela for maior que 600px o display passa a ser block*/
+            .muito-pequeno {
+                display: block;
+            }
+        }
+
+        @media(max-width: 2000px),(orientation:landscape){
+            .pequeno-retrato{display: block;}
+            /*enquanto a largura for menor que 1000px ou se a orientação for retrado(portrait) paisagem(landscape)*/
+        }
+        @media(min-width: 600px)and (max-width: 1000px){
+            .intervalo{display: block;}
         }
     </style>
 </head>
+
 <body>
     <div class="muito-pequeno">Muito Pequeno</div>
     <div class="pequeno-retrato">Pequeno ou Retrato</div>
     <div class="intervalo">Intervalo</div>
 </body>
+
 </html>
