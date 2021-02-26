@@ -5,7 +5,72 @@
     <meta charset="UTF-8">
     <title>Position</title>
     <style>
-        /* ... */
+        div {
+            font-size: 40px;
+            padding: 30px;
+            border: solid 5px black;
+
+
+        }
+
+        .static {
+            background-color: blue;
+            /*top e left não funcionam nele*/
+
+        }
+
+        .fixed {
+            position: fixed;
+            /*deixará meu elemento mesmo rolando a pagina para baixo*/
+            bottom: 30px;
+            background-color: blueviolet;
+            right: 0px;
+        }
+
+        .relative1 {
+            position: relative;
+            background-color: chocolate;
+            /*leva em consiração o elemento anterior e não a pagina*/
+            top: 50px;
+            left: 5px;
+        }
+
+        .absolute1 {
+            /*leva em consideração a pagina e passa por cima de outros elementos*/
+            position: absolute;
+            left: 350px;
+            top: 120px;
+            background-color: coral;
+        }
+
+        .relative2 {
+            position: relative;
+            left: 250px;
+            top: 2000px;
+            width: 200px;
+            height: 200px;
+            background-color: darkkhaki;
+        }
+
+        .absolute2 {
+            /*como esse está dentro de uma div, ele se aloca em relaçao ao pai e nao a pagina*/
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: darkorange;
+        }
+
+        .sticky {
+            /*na hora da rolagem da pagina para baixo ele não some(fica no top)*/
+            position: sticky;
+            background-color: crimson;
+            top: 1px;
+            /*quando estiver a 1px do top ele não "desce", fixa no top*/
+
+
+        }
     </style>
 </head>
 
