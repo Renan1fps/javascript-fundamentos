@@ -22,19 +22,13 @@
             position: absolute;
             left: 300px;
             top: 0px;
-            bottom: 2000px;
             word-spacing: 40px;
-
-
-
         }
 
         ul li {
             display: inline;
             background-color: #2A272A;
             padding: 10px;
-
-
         }
 
         ul li a {
@@ -42,11 +36,10 @@
             font-family: oswald;
             text-decoration: none;
             background-color: #2A272A;
-
-
         }
 
-        ul li a:hover {
+        .menu a:hover,
+        .menu a.selected {
             background-color: #82A0AA;
             color: black;
             padding: 2px;
@@ -67,7 +60,7 @@
             font-family: oswald;
             border-radius: 200px;
             color: aliceblue;
-            padding: 5px;
+            padding: 3px 12px;
             text-decoration: none;
         }
 
@@ -81,21 +74,30 @@
         .menu-toggle {
             position: absolute;
             right: 2px;
-            top: 14px;
+            top: 11px;
             display: none;
             background-color: #656055;
-            padding: 4px 8px;
+            padding: 8px 8px;
             color: aliceblue;
-            border-radius: 7px;
+            border-radius: 5px;
         }
-        @media(max-width: 818px){
-            .autenticacao{display: none;}
+
+        @media(max-width: 818px) {
+            .autenticacao {
+                display: none;
+            }
         }
-        @media(max-width:703px){
-            .menu{display: none;}
+
+        @media(max-width:703px) {
+            .menu {
+                display: none;
+            }
         }
-        @media(max-width: 703px){
-            .menu-toggle{display: block;}
+
+        @media(max-width: 703px) {
+            .menu-toggle {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -133,7 +135,15 @@
     </header>
 
     <script>
-        // ...
+        window.onhashchange = function (e) {
+            const oldURL = e.oldURL.split('#')[1]
+            const newURL = e.newURL.split('#')[1]
+            console.log(oldURL, newURL)
+            const oldMenu=document.querySelector(`.menu [href='#${oldURL}']`)
+            const newMenu=document.querySelector(`.menu [href='#${newURL}']`)
+            oldMenu && oldMenu.classList.remove('selected')
+            newMenu && newMenu.classList.add('selected')
+        }
     </script>
 </body>
 
