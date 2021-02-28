@@ -7,7 +7,96 @@
     <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        /* ... */
+        body {
+            margin: 0;
+            background-color: #90929A;
+        }
+
+        .logo {
+            background-color: #2A272A;
+            padding: 2px;
+        }
+
+        .menu {
+            background-color: #2A272A;
+            position: absolute;
+            left: 300px;
+            top: 0px;
+            bottom: 2000px;
+            word-spacing: 40px;
+
+
+
+        }
+
+        ul li {
+            display: inline;
+            background-color: #2A272A;
+            padding: 10px;
+
+
+        }
+
+        ul li a {
+            color: aliceblue;
+            font-family: oswald;
+            text-decoration: none;
+            background-color: #2A272A;
+
+
+        }
+
+        ul li a:hover {
+            background-color: #82A0AA;
+            color: black;
+            padding: 2px;
+            border-radius: 2px;
+
+        }
+
+        .autenticacao {
+            position: absolute;
+            right: 10px;
+            top: 16px;
+            word-spacing: 15px;
+
+        }
+
+        .botao-destaque {
+            background-color: #E43434;
+            font-family: oswald;
+            border-radius: 200px;
+            color: aliceblue;
+            padding: 5px;
+            text-decoration: none;
+        }
+
+        .login {
+            font-family: oswald;
+            color: aliceblue;
+            text-decoration: none;
+
+        }
+
+        .menu-toggle {
+            position: absolute;
+            right: 2px;
+            top: 14px;
+            display: none;
+            background-color: #656055;
+            padding: 4px 8px;
+            color: aliceblue;
+            border-radius: 7px;
+        }
+        @media(max-width: 818px){
+            .autenticacao{display: none;}
+        }
+        @media(max-width:703px){
+            .menu{display: none;}
+        }
+        @media(max-width: 703px){
+            .menu-toggle{display: block;}
+        }
     </style>
 </head>
 
@@ -15,7 +104,7 @@
     <header class="cabecalho">
         <div class="logo">
             <a href="#inicio">
-                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" width="260px" />
             </a>
         </div>
         <button class="menu-toggle">
@@ -38,8 +127,8 @@
             </ul>
         </nav>
         <aside class="autenticacao">
-            <a href="#login">Login</a>
-            <a href="#registar" class="botao destaque">Registrar</a>
+            <a href="#login" class="login">Login</a>
+            <a href="#registar" class="botao-destaque">Registrar</a>
         </aside>
     </header>
 
