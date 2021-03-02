@@ -6,16 +6,51 @@
     <title>Flexbox #02</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+        }
+
+        .flex-container div {
+            box-sizing: border-box;/*considera as bordas na altura e largura*/
+        }
+
+        .flex-container {
+            display: flex;/*ele se torna um flex-box*/
+            height: 300px;
+            width: 600px;
+        }
+
+        .flex-container div:nth-child(3) { /*estou pegando o terceiro elemento dentro da div principal*/
+            background-color: blueviolet;
+            order: 1;/*ele passa a ter peso 1 (padrao 0) e vai ser exibido por ultimo*/
+            order: -1;/*ele passa a ser exibido primeiro por ter peso menor*/
+            align-self: center;/*alinha no centro (se for em linha ou em coluna ficará no meio)*/
+            align-self: flex-start;/*alinha no começo*/
+            align-self: flex-end;/*alinha no final*/
+            align-self: stretch;/*padrao*/
+        
+        }
+        .flex-container div{
+            width: 100px;
+            flex-grow: 1;/*ele vai pegar os espaços que sobraram e dividir igualmente entre os outros elementos*/
+
+        }
+        .flex-container{
+            width: 300px;
+        }
+        .flex-container div:nth-child(1){
+            flex-shrink: 5;/*a primera div dentro do meu flex-box irá diminuir mais que as outras*/
+        }
     </style>
 </head>
 
 <body>
-    <div class="flex-container tag nolabel">
-        <div class="tag nolabel">1</div>
-        <div class="tag nolabel">2</div>
-        <div class="tag nolabel">3</div>
-        <div class="tag nolabel">4</div>
+    <div class="flex-container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
     </div>
     <script src="js/tag.js"></script>
 </body>
