@@ -6,7 +6,19 @@
     <title>Flexbox #03</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-        /* ... */
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+        
+        }
+
+        .flex-container div {
+            flex-basis: 100px;
+            /*defino a largura dos elementos(maneira certa) os 100px vai depender da direção que o flex-direction está*/
+            width: 200px; /*se o direction estiver como column o flex basis perde para o width*/
+
+
+        }
     </style>
 </head>
 
