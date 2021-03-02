@@ -6,28 +6,46 @@
     <title>Flexbox #01</title>
     <link rel="stylesheet" href="css/tag.css">
     <style>
-       div{
-          border: solid 5px dodgerblue;
-          font-size: 40px;
-          margin: 5px;
-       }
-       .big{
-           font-size: 1.5em;
-       }
-       .flex-container{
-           display:flex;
-           flex-direction: column;/*para os elementos ficarem alinhados embaixo do outro(padrao vem row)*/
-           flex-direction: column-reverse;
-           flex-direction: row-reverse;/*mesma coisa do column(só que em linha*/
-           width: 50%;
-           flex-direction: row;
-           flex-wrap: wrap;/*quebra de linha(para casos de overflow)*/
-           flex-wrap: wrap-reverse; /*a linha de baixo vai para cima*/
-           flex-flow: row wrap;
-           height: 200px;
-           flex-flow: column-reverse wrap;
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+            margin: 5px;
+        }
 
-       }
+        .big {
+            font-size: 1.5em;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            /*para os elementos ficarem alinhados embaixo do outro(padrao vem row)*/
+            flex-direction: column-reverse;
+            flex-direction: row-reverse;
+            /*mesma coisa do column(só que em linha*/
+            width: 50%;
+            flex-direction: row;
+            flex-wrap: wrap;
+            /*quebra de linha(para casos de overflow)*/
+            flex-wrap: wrap-reverse;
+            /*a linha de baixo vai para cima*/
+            flex-flow: row wrap;
+            height: 200px;
+            flex-flow: column-reverse wrap;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            /*deixa os elementos alinhados em linha da esquerda para direita*/
+            justify-content: flex-end;
+            /*o mesmo do flex-start a diferença que alinha da direira para esquerda*/
+            justify-content: center;/*alinha os elementos no meio*/
+            justify-content: space-around;/*coloca os espaços entre os elemtos (tendo os mesmos espaços)*/
+            height: 400px;
+            align-items: baseline;/*alinha os elementos de acordo com o conteudo*/
+            align-items: flex-end;
+            align-items: flex-start;
+            align-items: center;
+
+        }
     </style>
 </head>
 
