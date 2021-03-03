@@ -1,16 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Selecionar Elementos #02</title>
     <link rel="stylesheet" href="css/estilo.css">
 </head>
+
 <body class="conteudo exercicio">
     <div id="primeiro">#primeiro</div>
     <div>Segundo</div>
     <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
-    <script>              
-        // ...
+    <script>
+        //querySelector diferente do getElement voc~e pode passar elementos, id, classes (seletores em geral)
+        //primeiro caso vou passar um id (nesse caso preciso passar o # para ele saber que é um id) e não preciso transformar em arrray
+        document.querySelectorAll('#primeiro').forEach(e => e.classList.add('destaque'))
+
+        //agora vou criar duas funçoes para remover e adicionar
+        const adicionar = seletor =>
+         document.querySelectorAll(seletor).forEach(e=>
+            e.classList.add('destaque')
+        )
+
+        const remover = seletor => document.querySelectorAll(seletor).forEach(e=>
+            e.classList.remove('destaque')
+        )
+        adicionar('div')
+        remover('div')
+
+        //pseudo classe :not com ela todo mundo que não tiver o parametro que eu passar não será modificado
+        adicionar(':not(#primeiro)')
+        remover('*')
+
+        //primeiro filho de um elemento :nth-child(1) adiconará destaque para o primeiro elemento filho de outro ex: <div> <h1></h1> </div> h1 receberá destaque
+        adicionar(':nth-child(1)')
+        remover('*')
+
+        //primeiro elemento do tipo: div:nth-of-type(1) pegará o primeiro elemento do tipo div (poderia ser outro tipo de elemento)
+        adicionar('div:nth-of-type(1)')
     </script>
 </body>
+
 </html>
