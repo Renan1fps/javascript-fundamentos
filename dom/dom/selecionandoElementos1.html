@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>
+        document.getElementById('primeiro').classList.add('destaque')
+        //estou pegando o elemento que tem id(primeiro) e no classlist adicioando uma classe destaque que está definido no meu css
+
+        const divs = document.getElementsByTagName('div')
+        //nessa constante estou pegando todas as tags que sao do tipo div
+
+        Array.from(divs).forEach(e => e.classList.remove('destaque'))
+        //peguei minha const divs transformei em array e dentro do forEach passei uma funçao para ele remover classes da minha tag que sejam do tipo destaque
+
+        const divsArray= [...divs]
+        //outra maneira de transformar em array
+        divsArray.forEach(e=>e.classList.add('destaque'))
+
+        const ultimosElementos= document.getElementsByClassName('ultimo')
+        for(let e of ultimosElementos){
+            e.classList.remove('destaque')
+        }
+        //nesse caso fiz a mesma coisa que no primeiro elemento mas nesse caso não trosfermei em array, mas usei o for of
+    </script>
+</body>
+
+</html>
