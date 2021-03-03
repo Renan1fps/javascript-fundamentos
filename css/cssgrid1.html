@@ -17,10 +17,24 @@
         div {
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content:center;
             font-size: 30px;
             border: solid 5px dodgerblue;
             background: #fff;
+           
+        }
+        body{
+            display:grid;/*usando css grid*/
+           /* grid-template-columns: 50% 50%;/*dimensão e quantas colunas(quantidade definida pelo tamanho de defino)*/
+            grid-template-columns: repeat(4, 8.33% 8.33% 8.33% );/*(8.33 vai ser a dimensao) e o 4 vai multiplicar o tanto que eu passar)*/
+            grid-template-rows: 50% 25% 12.5% 12.5%;
+            grid-template-rows: 100px 1fr;
+            grid-template-rows: 100px auto auto auto;
+        }
+        .d8{
+            grid-column-start: 2;
+            grid-column-end: 4;
+
         }
     </style>
 </head>
@@ -38,6 +52,7 @@
     <div class="d10">10</div>
     <div class="d11">11</div>
     <div class="d12">12</div>
+    
 </body>
 
 </html>
