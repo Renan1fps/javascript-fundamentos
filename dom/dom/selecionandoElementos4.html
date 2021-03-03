@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <title>Selecionar Elementos #04</title>
     <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        .teste:hover{
+            background-color: blueviolet;
+        }
+    </style>
 </head>
 
 <body class="conteudo exercicio">
@@ -22,7 +27,34 @@
         <p>Fim</p>
     </div>
     <script>
-        // ...
+        function log(){
+            console.log(this)
+        }
+        HTMLCollection.prototype.log= log
+        HTMLElement.prototype.log= log
+        NodeList.prototype.log= log
+        Node.prototype.log=log
+
+
+        const lista= document.querySelector('div ul')
+        lista.parentNode.log() //vai pegar a div que é o pai da ul
+
+        lista.childNodes //vai pegar os li da minha ul
+
+        const primeiro= lista.firstChild //pegara o primeiro elemento(vai vir texto pq tem espaços no meu html)
+        primeiro.log()
+
+        primeiro.nextSibling.log() //pegara o irmão do primeiro elemento
+
+        const ultimo=lista.lastChild//ultimo elemento (vem texto por causa do html)
+        ultimo.log()
+         
+       lista.firstElementChild.log()//esse sim pegara o primeiro elemento 
+       lista.firstElementChild.classList.add('teste')
+       lista.lastElementChild.log()
+       lista.parentNode.nextElementSibling.log()//ele vai para a div e pega o proximo elemento (no caso a fim)
+
+
     </script>
 </body>
 
