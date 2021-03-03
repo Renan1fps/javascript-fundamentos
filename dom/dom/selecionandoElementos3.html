@@ -31,7 +31,14 @@
         <button>Pesquisar</button>
     </form>
     <script>
-        // ...
+        //selecionando fomularios
+        console.log(document.forms)
+        console.log(document.getElementsByName('pesquisa'))
+        console.log(document.pesquisa)
+        console.log(document.pesquisa.q)
+
+        //alterar o valor do campo input
+        document.pesquisa.q.value='linux'
     </script>
 </body>
 
