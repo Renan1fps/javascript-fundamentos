@@ -9,7 +9,38 @@
 
 <body class='conteudo exercicio'>
     <script>
-        // ...
+        const body = document.querySelector('body')//peguei o elemento body para pode colocar outro elementos
+
+        const div1 = document.createElement('div')//criei um elemento do tipo div
+        div1.classList.add('destaque')//adicionei uma classe
+        div1.innerHTML = 'Primeira div'
+
+        const div2 = document.createElement('div')
+        div2.setAttribute('wm-atributo', 'valor')//adiconei um atributo a minha div
+        div2.innerHTML = 'Ola'
+
+        const p = document.createElement('p')
+        p.innerHTML = 'Paragrafo'//estou colocando conteudo no meu elemento
+
+        const div3 = document.createElement('div')
+        div3.appendChild(p)//dentro da minha div 3 vou adicionar o paragrafo *como nao tem outro elemento ele será o primeiro senao era o ultimo
+
+
+        body.appendChild(div1)//colocando as div criadas no meu body
+        body.appendChild(div2)
+        body.appendChild(div3)
+
+
+        //inserindo um elemento em determinada posição (antes de uma determinada posição)
+        const texto= document.createTextNode('Antes do paragrafo')
+        div3.insertBefore(texto, div3.childNodes[0])
+
+        const div4= div3.cloneNode(true)//true clona tudo que tem na div e false apenas a div
+
+        body.appendChild(div4)
+        body.removeChild(div3)
+
+
     </script>
 </body>
 
