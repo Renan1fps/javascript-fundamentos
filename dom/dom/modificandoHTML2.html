@@ -12,7 +12,13 @@
         <p>Texto Inicial</p>
     </div>
     <script>
-        // ...
+        const div = document.querySelector('div')
+        div.innerHTML = 'Texto alterado'//fazendo isso tudo que ja esiver na div será substituido (apagado) pelo que passei
+        //div.outerHTML = 'texto alaterado'//usa-se muito pouco
+        div.insertAdjacentHTML('beforebegin', '<p>Antes do incio</p>')//adiciona antes do inicio da div
+        div.insertAdjacentHTML("afterbegin",'<p>Depois do inicio</p>')
+        div.insertAdjacentHTML('beforeend','<p>antes do Fim</p>')
+        div.insertAdjacentHTML("afterend",'<p>Depois do fim</p>')
     </script>
 </body>
 
