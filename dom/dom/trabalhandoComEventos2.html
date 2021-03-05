@@ -10,6 +10,22 @@
 <body class="conteudo exercicio">
     <div>Elemento</div>
     <script>
-        // ...
+        //arrastando elemento com click do mouse
+        const item = document.querySelector('div')
+        item.style.position = 'absolute' //coloco sua posição sendo absoluta para poder mover 
+
+
+        //vou tratar o evento onmousemove associando a ele uma funçao
+        item.onmousemove = e => {
+            item.style.cursor = 'move'
+
+            if(e.buttons){
+                e.target.style.top= `${e.clientY -(item.clientHeight /2)}px`
+                /*estou pegando a div(e.target) setando a posiçao dela em relação
+                ao top da pagina(style.top) que irá receber o eixo y da pagina(e.clienteY)
+                menos a altura da div (item.clienteHeight)*/
+            }
+
+        }
     </script>
 </body>
