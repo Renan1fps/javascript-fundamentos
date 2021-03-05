@@ -9,9 +9,25 @@
 
 <body class="conteudo exercicio">
     <div>
-        <a href="https://google.com.br">Google</a>
+        <a espera-um-pouco href="https://google.com.br" onclick="navergar5seg(event)">Google</a>
+        <!--preciso chamar o onclick e passar minha funçao e no parametro event para funcionar-->
+        <!--em outra palavras: quando acontecer o evento do click, chame minha função passando o evnto como parametro  -->
     </div>
     <script>
-        // ...
+        function navergar5seg(e) {//criei uma função para interceptar o evento do click
+            e.preventDefault()
+            console.log('saindo em 5 segundos')
+            setTimeout(() => {
+                const link = e.target //pego o evento que foi passado (e) e acesso o target que é quem dispara o evento do link
+                window.location.href = link.href //estou pegando o link e substituindo na barra de endereço do browser
+            }, 5000)
+
+        }
+
+        // const a = document.querySelector('a') maneira de não fazer o onclick de forma explicita na tag
+        //a.onclick = navergar5seg
+
+        const a = document.querySelector('[espera-um-pouco]')//crio uma prorriedade personalizada para saber o que está acontecendo com aquela tag
+        a.onclick = navergar5seg
     </script>
 </body>
