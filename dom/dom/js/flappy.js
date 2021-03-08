@@ -54,7 +54,7 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto) {
         new ParDeBarreiras(altura, abertura, largura + espaco * 3)
     ]
 
-    const deslocamento = 3
+    const deslocamento = 3 
     this.animar = () => {
         this.pares.forEach(par => {
             par.setX(par.getX() - deslocamento)
@@ -192,12 +192,7 @@ toda vez que eu instanciar ela passando true o false para definir a ordem de cri
 crio duas constantes que tambem recebem a funçao novo elemento e depois coloco dentro de elemento atraves do appendChild, em seguindo tenho  uma funçao 
 para setar a altura das barreiras.
 
-
-
-
-
-
-
-
-
+3- FUNÇÃO ParDeBArreiras: 
+é também uma funçao construtora tendo um elemento que recebe a função para criar elementos, tem também  superior que recebe a função barreira
+ 
 */
