@@ -19,11 +19,12 @@
         item.onmousemove = e => {
             item.style.cursor = 'move'
 
-            if(e.buttons){
-                e.target.style.top= `${e.clientY -(item.clientHeight /2)}px`
+            if (e.buttons) {
+                e.target.style.top = `${e.clientY - (item.clientHeight / 2)}px`
                 /*estou pegando a div(e.target) setando a posiçao dela em relação
                 ao top da pagina(style.top) que irá receber o eixo y da pagina(e.clienteY)
                 menos a altura da div (item.clienteHeight)*/
+                e.target.style.left = `${e.clientX - (item.clientWidth / 2)}px`
             }
 
         }
