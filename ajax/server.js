@@ -17,11 +17,18 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage }).single("arquivo");
 app.post("/upload", (req, res) => {
-  upload(req, res, err => {
+  upload(req, res, (err) => {
     if (err) {
       return res.end("ocorreu um erro.");
     }
-    res.end('Concluído com sucesso!')
+    res.end("Concluído com sucesso!");
+  });
+});
+
+app.post("/formulario", (req, res) => {
+  res.send({
+      ...req.body,
+      id:1
   });
 });
 
