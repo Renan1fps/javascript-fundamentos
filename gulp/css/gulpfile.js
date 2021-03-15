@@ -1,4 +1,4 @@
-const { series } = require("gulp");
+const { series, parallel } = require("gulp");
 const gulp = require("gulp");
 const sass = require("gulp-sass");
 const uglifycss = require("gulp-uglifycss");
@@ -14,7 +14,11 @@ function tranformacaoCSS() {
       })
     )
     .pipe(concat("estilo.min.css"))
-    .pipe(gulp.dest('build/css'))
+    .pipe(gulp.dest("build/css"));
 }
 
-exports.default= series(tranformacaoCSS)
+function copiar() {
+ return gulp.src("src/*.html").pipe(gulp.dest("build"));
+}
+
+exports.default = parallel(tranformacaoCSS, copiar);
