@@ -1,5 +1,5 @@
 class Filme {
-  //atributos, sempre usar this e nome = this.nome es empre dentro do construtor
+  //atributos, sempre usar this e nome = this.nome e sempre dentro do construtor
   constructor() {
     this.titulo = "";
     this.ano = 2000;
@@ -23,3 +23,8 @@ class Filme {
     console.log("Fechar");
   }
 }
+
+var vingadores= new Filme();
+var starWars= new Filme();
+var theLastNaruto= new Filme();
+
