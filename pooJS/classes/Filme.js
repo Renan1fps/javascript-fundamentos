@@ -1,12 +1,12 @@
 class Filme {
   //atributos, sempre usar this e nome = this.nome e sempre dentro do construtor
-  constructor() {
-    this.titulo = "";
-    this.ano = 2000;
-    this.genero = "";
-    this.diretor = "";
+  constructor(titulo,ano,genero,diretor,duracao) {
+    this.titulo = titulo;
+    this.ano = ano;
+    this.genero = genero;
+    this.diretor = diretor
     this.atores = [];
-    this.duracao = 0;
+    this.duracao = duracao;
   }
 
   //metodos são funções
@@ -35,3 +35,7 @@ starWars.genero = "Ficção, drama, guerra";
 starWars.ano = 2000;
 
 console.log(starWars)
+
+var naruto= new Filme("Prisão de sangue",2008,"anime","masaki Kishimoto","2h");
+console.log(naruto)
+
