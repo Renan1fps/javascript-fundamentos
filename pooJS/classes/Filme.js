@@ -24,7 +24,14 @@ class Filme {
   }
 }
 
-var vingadores= new Filme();
-var starWars= new Filme();
-var theLastNaruto= new Filme();
+var vingadores = new Filme();
+var starWars = new Filme();
+var theLastNaruto = new Filme();
 
+//setando atributos
+
+starWars.titulo = "Império contra ataca";
+starWars.genero = "Ficção, drama, guerra";
+starWars.ano = 2000;
+
+console.log(starWars)
