@@ -10,7 +10,7 @@ app.get("/games", (req, res) => {
   res.json(DB.games);
 });
 
-app.get("/games/:id", (req, res) => {
+app.get("/game/:id", (req, res) => {
   var idrequest = req.params.id;
 
   if (isNaN(idrequest)) {
@@ -27,7 +27,7 @@ app.get("/games/:id", (req, res) => {
   }
 });
 
-app.post("/games", (req, res) => {
+app.post("/game", (req, res) => {
   var { title, year, price } = req.body;
   DB.games.push({
     id: 25,
@@ -35,7 +35,23 @@ app.post("/games", (req, res) => {
     year,
     price,
   });
-  res.sendStatus(200)
+  res.sendStatus(200);
+});
+
+app.delete("/game/:id", (req, res) => {
+  var idparams = req.params.id;
+  if (isNaN(idparams)) {
+    res.sendStatus(400);
+  } else {
+    var id = parseInt(idparams);
+    var index = DB.games.findIndex((g) => g.id == id);
+    if(index==-1){
+      res.sendStatus(404)
+    }else{
+      DB.games.splice(index,1);
+      res.sendStatus(200)
+    }
+  }
 });
 
 //banco de dados falso
