@@ -27,6 +27,17 @@ app.get("/games/:id", (req, res) => {
   }
 });
 
+app.post("/games", (req, res) => {
+  var { title, year, price } = req.body;
+  DB.games.push({
+    id: 25,
+    title,
+    year,
+    price,
+  });
+  res.sendStatus(200)
+});
+
 //banco de dados falso
 var DB = {
   games: [
