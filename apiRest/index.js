@@ -1,7 +1,9 @@
 const { urlencoded } = require("express");
 const express = require("express");
 const app = express();
+const cors = require("cors");
 
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -45,11 +47,37 @@ app.delete("/game/:id", (req, res) => {
   } else {
     var id = parseInt(idparams);
     var index = DB.games.findIndex((g) => g.id == id);
-    if(index==-1){
-      res.sendStatus(404)
-    }else{
-      DB.games.splice(index,1);
-      res.sendStatus(200)
+    if (index == -1) {
+      res.sendStatus(404);
+    } else {
+      DB.games.splice(index, 1);
+      res.sendStatus(200);
+    }
+  }
+});
+
+app.put("/game/:id", (req, res) => {
+  var idrequest = req.params.id;
+  if (isNaN(idrequest)) {
+    res.sendStatus(400);
+  } else {
+    var id = parseInt(idrequest);
+    var game = DB.games.find((g) => g.id == id);
+    if (game != undefined) {
+      var { title, year, price } = req.body;
+
+      if (title != undefined) {
+        game.title = title;
+      }
+      if (year != undefined) {
+        game.year = year;
+      }
+      if (price != undefined) {
+        game.price = price;
+      }
+      res.sendStatus(200);
+    } else {
+      res.sendStatus(404);
     }
   }
 });
