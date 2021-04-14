@@ -109,7 +109,7 @@ var DB = {
       id: 1,
       name: "Renan Oliveira",
       password: "123456",
-      email: "renan@gamil.com",
+      email: "renan@gmail.com",
     },
     {
       id: 2,
@@ -128,18 +128,18 @@ app.post("/auth", (req, res) => {
 
     if (userReq != undefined) {
       if (userReq.password == password) {
-        res.status = 200;
+        res.status(200);
         res.json({ token: "Token falso" });
       } else {
-        res.status = 401;
+        res.status(401);
         res.json({ err: "Credencias invalidas" });
       }
     } else {
-      res.status = 404;
+      res.status(404)
       res.json({ err: "Email não encontrado!" });
     }
   } else {
-    res.status = 400;
+    res.status(400);
     res.json({ err: "Email invalido!" });
   }
 });
