@@ -55,6 +55,12 @@
 
         games.forEach(game => {
             var lista = document.createElement("li")
+
+            lista.setAttribute("data-id",game.id)
+            lista.setAttribute("data-title",game.title)
+            lista.setAttribute("data-year",game.year)
+            lista.setAttribute("data-price",game.price)
+
             lista.innerHTML = "Nome: " + game.title + " |" + "preço: " + game.price
             tagGames.appendChild(lista)
         })
