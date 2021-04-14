@@ -51,7 +51,11 @@
 
     function deleteGame(listItem) {
         var id = listItem.getAttribute("data-id")
-        console.log(id)
+        axios.delete("http://localhost:8080/game/" + id).then(response => {
+            alert("Game deletado!")
+        }).catch(erro => {
+            alert("Erro! tente novamente mais tarde.")
+        })
     }
 
     axios.get("http://localhost:8080/games").then(response => {
