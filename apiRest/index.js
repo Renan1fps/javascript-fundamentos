@@ -87,24 +87,62 @@ var DB = {
   games: [
     {
       id: 23,
-      name: "Call of duty",
+      title: "Call of duty",
       year: 2019,
       price: 200,
     },
     {
       id: 45,
-      name: "Pubg",
+      title: "Pubg",
       year: 2017,
       price: 78,
     },
     {
       id: 278,
-      name: "Euro truck",
+      title: "Euro truck",
       year: 2011,
       price: 10,
     },
   ],
+  users: [
+    {
+      id: 1,
+      name: "Renan Oliveira",
+      password: "123456",
+      email: "renan@gamil.com",
+    },
+    {
+      id: 2,
+      name: "Lucas Nascimento",
+      password: "shingeki no kyojin",
+      email: "lucas@gamil.com",
+    },
+  ],
 };
+
+app.post("/auth", (req, res) => {
+  var { email, password } = req.body;
+
+  if (email != undefined) {
+    var userReq = DB.users.find((user) => user.email == email);
+
+    if (userReq != undefined) {
+      if (userReq.password == password) {
+        res.status = 200;
+        res.json({ token: "Token falso" });
+      } else {
+        res.status = 401;
+        res.json({ err: "Credencias invalidas" });
+      }
+    } else {
+      res.status = 404;
+      res.json({ err: "Email não encontrado!" });
+    }
+  } else {
+    res.status = 400;
+    res.json({ err: "Email invalido!" });
+  }
+});
 
 app.listen(8080, (erro) => {
   if (erro) {
