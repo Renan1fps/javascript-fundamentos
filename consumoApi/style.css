@@ -8,6 +8,13 @@ font-size: 20px;
 font-family: Arial, Helvetica, sans-serif;
 color: rgb(93, 21, 160);
 }
+button{
+    background-color: rgb(93, 21, 160);
+    border-radius: 7px;
+    padding: 0x 0px;
+    margin-left: 10px;
+    color: azure;
+}
 h4{
     text-align: center;
     background-color: rgb(93, 21, 160);
@@ -26,10 +33,11 @@ input{
     margin-left: 10px;
     margin-top: 5px;
 }
-button{
+#btncadastro{
     margin-top: 5px;
     margin-left: 70px;
     padding: 10px 20px;
     background-color: rgb(93, 21, 160);
     border-radius: 10px;
+    color: azure;
 }

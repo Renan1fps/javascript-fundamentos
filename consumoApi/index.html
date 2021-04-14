@@ -19,7 +19,7 @@
         <input type="text" name="title" id="title" placeholder="Game name"><br>
         <input type="number" name="year" id="year" placeholder="Game year "><br>
         <input type="number" name="price" id="price" placeholder="Game price"><br>
-        <button type="submit" onclick="createGame()">Criar</button>
+        <button id="btncadastro" type="submit" onclick="createGame()">Criar</button>
     </div>
 
 
@@ -38,15 +38,20 @@
             year: inputYear.value,
             price: inputPrice.value
         }
-        axios.post("http://localhost:8080/game",dataGame).then(response=>{
-            if(response.status==200){
+        axios.post("http://localhost:8080/game", dataGame).then(response => {
+            if (response.status == 200) {
                 alert("Game cadastrado!")
             }
 
-        }).catch(erro=>{
+        }).catch(erro => {
             console.log("erro")
         })
-        
+
+    }
+
+    function deleteGame(listItem) {
+        var id = listItem.getAttribute("data-id")
+        console.log(id)
     }
 
     axios.get("http://localhost:8080/games").then(response => {
@@ -56,12 +61,19 @@
         games.forEach(game => {
             var lista = document.createElement("li")
 
-            lista.setAttribute("data-id",game.id)
-            lista.setAttribute("data-title",game.title)
-            lista.setAttribute("data-year",game.year)
-            lista.setAttribute("data-price",game.price)
+            lista.setAttribute("data-id", game.id)
+            lista.setAttribute("data-title", game.title)
+            lista.setAttribute("data-year", game.year)
+            lista.setAttribute("data-price", game.price)
 
             lista.innerHTML = "Nome: " + game.title + " |" + "preço: " + game.price
+
+            var deleteBtn = document.createElement("button")
+            deleteBtn.innerHTML = "Deletar"
+            deleteBtn.addEventListener("click", function () {
+                deleteGame(lista)
+            })
+            lista.appendChild(deleteBtn)
             tagGames.appendChild(lista)
         })
 
