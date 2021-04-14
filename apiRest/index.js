@@ -2,10 +2,15 @@ const { urlencoded } = require("express");
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const jwt = require("jsonwebtoken");
+
+const JWTsecret = "20030927";
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+
 
 app.get("/games", (req, res) => {
   res.statusCode = 200;
@@ -82,6 +87,43 @@ app.put("/game/:id", (req, res) => {
   }
 });
 
+app.post("/auth", (req, res) => {
+  var { email, password } = req.body;
+
+  if (email != undefined) {
+    var userReq = DB.users.find((user) => user.email == email);
+
+    if (userReq != undefined) {
+
+      if (userReq.password == password) {
+
+        jwt.sign({id: userReq.id, email: userReq.email },JWTsecret,{expiresIn:'48h'},(err, token)=>{
+          if(err){
+            res.status(400);
+            res.json({erro: "Falha interna"})
+          }else{
+            res.status(200);
+            res.json({ token: token });
+          }
+        });
+        
+      } else {
+        res.status(401);
+        res.json({ err: "Credencias invalidas" });
+      }
+
+    } else {
+      res.status(404);
+      res.json({ err: "Email não encontrado!" });
+    }
+
+  } else {
+    res.status(400);
+    res.json({ err: "Email invalido!" });
+  }
+
+});
+
 //banco de dados falso
 var DB = {
   games: [
@@ -119,30 +161,6 @@ var DB = {
     },
   ],
 };
-
-app.post("/auth", (req, res) => {
-  var { email, password } = req.body;
-
-  if (email != undefined) {
-    var userReq = DB.users.find((user) => user.email == email);
-
-    if (userReq != undefined) {
-      if (userReq.password == password) {
-        res.status(200);
-        res.json({ token: "Token falso" });
-      } else {
-        res.status(401);
-        res.json({ err: "Credencias invalidas" });
-      }
-    } else {
-      res.status(404)
-      res.json({ err: "Email não encontrado!" });
-    }
-  } else {
-    res.status(400);
-    res.json({ err: "Email invalido!" });
-  }
-});
 
 app.listen(8080, (erro) => {
   if (erro) {
