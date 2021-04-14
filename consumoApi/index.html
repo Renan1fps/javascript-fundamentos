@@ -10,22 +10,52 @@
 </head>
 
 <body>
-<div class="listagames">
-    <h4>Lista de games</h4>
-    <ul id="games"></ul>
-</div>
-    
+    <div class="listagames">
+        <h4>Lista de games</h4>
+        <ul id="games"></ul>
+    </div>
+    <div class="cadastrogame">
+        <h4>Novo game</h4>
+        <input type="text" name="title" id="title" placeholder="Game name"><br>
+        <input type="number" name="year" id="year" placeholder="Game year "><br>
+        <input type="number" name="price" id="price" placeholder="Game price"><br>
+        <button type="submit" onclick="createGame()">Criar</button>
+    </div>
+
+
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+
+    function createGame() {
+        var inputTitle = document.getElementById("title")
+        var inputYear = document.getElementById("year")
+        var inputPrice = document.getElementById("price")
+
+        var dataGame = {
+            title: inputTitle.value,
+            year: inputYear.value,
+            price: inputPrice.value
+        }
+        axios.post("http://localhost:8080/game",dataGame).then(response=>{
+            if(response.status==200){
+                alert("Game cadastrado!")
+            }
+
+        }).catch(erro=>{
+            console.log("erro")
+        })
+        
+    }
+
     axios.get("http://localhost:8080/games").then(response => {
         var games = response.data
         var tagGames = document.getElementById("games")
 
         games.forEach(game => {
             var lista = document.createElement("li")
-            lista.innerHTML = "Nome: " + game.name + " |" + "preço: " + game.price
+            lista.innerHTML = "Nome: " + game.title + " |" + "preço: " + game.price
             tagGames.appendChild(lista)
         })
 
