@@ -10,9 +10,29 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+function auth(req, res, next) {
+  var authToken = req.headers["authorization"];
+  if (authToken != undefined) {
+    const bearer = authToken.split(" ");
+    var token = bearer[1];
+    jwt.verify(token, JWTsecret, (error, data) => {
+      if (error) {
+        res.status(401);
+        res.json({ error: "No authorize" });
+      } else {
+        req.token = token;
+        req.loggedUser = { id: data.id, email: data.email };
+        next();
+      }
+    });
+  } else {
+    res.status(401);
+    res.json({ error: "No authorize request" });
+  }
+  
+}
 
-
-app.get("/games", (req, res) => {
+app.get("/games", auth, (req, res) => {
   res.statusCode = 200;
   res.json(DB.games);
 });
@@ -94,34 +114,33 @@ app.post("/auth", (req, res) => {
     var userReq = DB.users.find((user) => user.email == email);
 
     if (userReq != undefined) {
-
       if (userReq.password == password) {
-
-        jwt.sign({id: userReq.id, email: userReq.email },JWTsecret,{expiresIn:'48h'},(err, token)=>{
-          if(err){
-            res.status(400);
-            res.json({erro: "Falha interna"})
-          }else{
-            res.status(200);
-            res.json({ token: token });
+        jwt.sign(
+          { id: userReq.id, email: userReq.email },
+          JWTsecret,
+          { expiresIn: "48h" },
+          (err, token) => {
+            if (err) {
+              res.status(400);
+              res.json({ erro: "Falha interna" });
+            } else {
+              res.status(200);
+              res.json({ token: token });
+            }
           }
-        });
-        
+        );
       } else {
         res.status(401);
         res.json({ err: "Credencias invalidas" });
       }
-
     } else {
       res.status(404);
       res.json({ err: "Email não encontrado!" });
     }
-
   } else {
     res.status(400);
     res.json({ err: "Email invalido!" });
   }
-
 });
 
 //banco de dados falso
