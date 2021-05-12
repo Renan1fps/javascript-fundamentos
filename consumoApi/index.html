@@ -15,6 +15,7 @@
         <input id="emailLogin" type="text" placeholder="E-mail"><br>
         <input id="passwordLogin" type="password" placeholder="Senha"><br>
         <button class="btncadastro" onclick="login()">Login</button>
+        <button class="btncadastro" onclick="logout()">Logout</button>
     </div>
     <div class="listagames">
         <h4>Lista de games</h4>
@@ -30,9 +31,20 @@
 
 
 
+
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+
+    var axiosConfig = {
+        headers: {
+            Authorization: "Bearer " + localStorage.getItem("TOKEN")
+        }
+    }
+
+    function logout() {
+        localStorage.clear()   
+    }
 
     function login() {
 
@@ -44,17 +56,15 @@
             password: inputPassword.value
         }
         axios.post("http://localhost:8080/auth", dataLogin).then(response => {
-            var token= response.data.token
+            var token = response.data.token
+            localStorage.setItem("TOKEN", token)
+            getGames()
         }).catch(erro => {
             alert("Email ou senha incorretos!")
         })
     }
 
-    var axiosConfig = {
-        headers: {
-            Authorization: "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJyZW5hbkBnbWFpbC5jb20iLCJpYXQiOjE2MjA4NTAyODksImV4cCI6MTYyMTAyMzA4OX0.pKr7F-AU2DETuvv_CIcAyN6es-4FzreAEOxPZTS5-fs"
-        }
-    }
+
 
     function createGame() {
         var inputTitle = document.getElementById("title")
@@ -66,7 +76,7 @@
             year: inputYear.value,
             price: inputPrice.value
         }
-        axios.post("http://localhost:8080/game", dataGame).then(response => {
+        axios.post("http://localhost:8080/game", axiosConfig, dataGame).then(response => {
             if (response.status == 200) {
                 alert("Game cadastrado!")
             }
@@ -86,7 +96,8 @@
         })
     }
 
-    axios.get("http://localhost:8080/games", axiosConfig).then(response => {
+   function getGames(){
+    axios.get("http://localhost:8080/games", axiosConfig, axiosConfig).then(response => {
         var games = response.data
         var tagGames = document.getElementById("games")
 
@@ -112,6 +123,7 @@
     }).catch(erro => {
         console.log(erro)
     })
+   } 
 </script>
 
 </html>
