@@ -28,6 +28,12 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
 
+    var axiosConfig = {
+        headers: {
+            Authorization: "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJyZW5hbkBnbWFpbC5jb20iLCJpYXQiOjE2MjA4NTAyODksImV4cCI6MTYyMTAyMzA4OX0.pKr7F-AU2DETuvv_CIcAyN6es-4FzreAEOxPZTS5-fs"
+        }
+    }
+
     function createGame() {
         var inputTitle = document.getElementById("title")
         var inputYear = document.getElementById("year")
@@ -58,7 +64,7 @@
         })
     }
 
-    axios.get("http://localhost:8080/games").then(response => {
+    axios.get("http://localhost:8080/games", axiosConfig).then(response => {
         var games = response.data
         var tagGames = document.getElementById("games")
 
