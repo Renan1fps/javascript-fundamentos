@@ -1,6 +1,7 @@
 body{
     background-color: rgb(32, 30, 30);
     margin: 0;
+    
 }
 .listagames{
 background-color: rgb(32, 30, 30);
@@ -15,7 +16,7 @@ button{
     margin-left: 10px;
     color: azure;
 }
-h4{
+h4,h1{
     text-align: center;
     background-color: rgb(93, 21, 160);
     color: azure;
@@ -33,7 +34,7 @@ input{
     margin-left: 10px;
     margin-top: 5px;
 }
-#btncadastro{
+.btncadastro{
     margin-top: 5px;
     margin-left: 70px;
     padding: 10px 20px;
@@ -41,3 +42,4 @@ input{
     border-radius: 10px;
     color: azure;
 }
+

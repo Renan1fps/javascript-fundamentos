@@ -10,6 +10,12 @@
 </head>
 
 <body>
+    <div>
+        <h1>Login</h1>
+        <input id="emailLogin" type="text" placeholder="E-mail"><br>
+        <input id="passwordLogin" type="password" placeholder="Senha"><br>
+        <button class="btncadastro" onclick="login()">Login</button>
+    </div>
     <div class="listagames">
         <h4>Lista de games</h4>
         <ul id="games"></ul>
@@ -19,7 +25,7 @@
         <input type="text" name="title" id="title" placeholder="Game name"><br>
         <input type="number" name="year" id="year" placeholder="Game year "><br>
         <input type="number" name="price" id="price" placeholder="Game price"><br>
-        <button id="btncadastro" type="submit" onclick="createGame()">Criar</button>
+        <button class="btncadastro" type="submit" onclick="createGame()">Criar</button>
     </div>
 
 
@@ -27,6 +33,22 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
+
+    function login() {
+
+        var inputEmail = document.getElementById("emailLogin")
+        var inputPassword = document.getElementById("passwordLogin")
+
+        var dataLogin = {
+            email: inputEmail.value,
+            password: inputPassword.value
+        }
+        axios.post("http://localhost:8080/auth", dataLogin).then(response => {
+            var token= response.data.token
+        }).catch(erro => {
+            alert("Email ou senha incorretos!")
+        })
+    }
 
     var axiosConfig = {
         headers: {
