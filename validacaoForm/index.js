@@ -7,13 +7,13 @@ var cookieParser= require("cookie-parser")
 app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 app.use(express.json());
-
+app.use(cookieParser("20030927"))
 app.use(
   session({
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true },
+    cookie: { maxAge: 60000 },
   })
 );
 app.use(flash());
